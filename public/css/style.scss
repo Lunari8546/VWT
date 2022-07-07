@@ -1,0 +1,29 @@
+$base: #171717;
+$text: #dfd3c3;
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap');
+
+::selection {
+  background: $text;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', monospace;
+}
+
+html,
+body {
+  background: $base;
+  color: $text;
+  width: 100vw;
+  height: 100vh;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
