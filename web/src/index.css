@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400&display=swap');
+
+:root {
+  --base: #171717;
+  --text: #dfd3c3;
+}
+
+::selection {
+  background: var(--text);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Code Pro', monospace;
+}
+
+main {
+  background-color: var(--base);
+  color: var(--text);
+  width: 100vw;
+  height: 100vh;
+}
