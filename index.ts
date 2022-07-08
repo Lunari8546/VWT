@@ -11,6 +11,6 @@ app.get("/", (req, res) => {
   res.render("main");
 });
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 app.listen(process.env.PORT);
