@@ -4,7 +4,6 @@ const Routes = () => {
   return (
     <Router>
       <Route path="/" page={LandingPage} name="landing" />
-      <Route path="/landing" page={LandingPage} name="landing" />
       <Route notfound page={NotFoundPage} />
     </Router>
   )
