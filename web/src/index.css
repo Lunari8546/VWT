@@ -16,6 +16,10 @@
   outline: none;
 }
 
+br {
+  user-select: none;
+}
+
 button {
   background: transparent;
   border: 1px solid var(--text);
@@ -39,6 +43,7 @@ input {
   color: var(--text);
   width: 14rem;
   text-align: center;
+  padding-bottom: 4px;
 }
 
 label {
@@ -65,5 +70,13 @@ main {
 }
 
 @media only screen and (max-width: 425px) {
+  input {
+    width: 12rem;
+  }
+}
 
+@media only screen and (max-width: 320px) {
+  input {
+    width: 10rem;
+  }
 }
