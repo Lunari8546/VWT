@@ -36,6 +36,10 @@ button:hover {
   color: var(--base);
 }
 
+html {
+  background: var(--base);
+}
+
 input {
   background: none;
   border: none;
@@ -44,6 +48,7 @@ input {
   width: 14rem;
   text-align: center;
   padding-bottom: 4px;
+  font-size: 1rem;
 }
 
 label {
@@ -51,10 +56,16 @@ label {
 }
 
 main {
-  background-color: var(--base);
   color: var(--text);
-  width: 100vw;
   height: 100vh;
+}
+
+.formField {
+  text-align: right;
+}
+
+.i {
+  font-style: italic;
 }
 
 .menu {
@@ -65,8 +76,23 @@ main {
   text-align: center;
 }
 
-.formField {
-  text-align: right;
+.terminal {
+  padding: 8rem;
+}
+
+.terminal input {
+  border: none;
+  cursor: default;
+  text-align: left;
+  width: 60%;
+}
+
+.terminal .console span {
+  margin-right: 0.5rem;
+}
+
+.terminal .history {
+  margin-bottom: 2rem;
 }
 
 @media only screen and (max-width: 425px) {

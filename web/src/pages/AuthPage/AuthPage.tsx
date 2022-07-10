@@ -12,11 +12,11 @@ import { MetaTags } from '@redwoodjs/web'
 const AuthPage = () => {
   const { logIn, signUp, currentUser } = useAuth()
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: Record<string, string>) => {
     try {
       await logIn({ ...data })
 
-      navigate(routes.landing())
+      navigate(routes.terminal(), { replace: true })
     } catch (error) {
       console.log(error)
     }
