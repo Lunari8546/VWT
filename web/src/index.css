@@ -77,7 +77,7 @@ main {
 }
 
 .terminal {
-  padding: 8rem;
+  padding: 6rem;
 }
 
 .terminal input {
@@ -87,12 +87,10 @@ main {
   width: 60%;
 }
 
-.terminal .console span {
-  margin-right: 0.5rem;
-}
-
 .terminal .history {
   margin-bottom: 2rem;
+  white-space: pre-line;
+  user-select: none;
 }
 
 @media only screen and (max-width: 425px) {
