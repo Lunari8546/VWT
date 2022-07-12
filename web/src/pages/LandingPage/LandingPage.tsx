@@ -1,8 +1,10 @@
 import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
 
+import UserCell from 'src/components/UserCell'
+
 const LandingPage = () => {
-  const { logOut, currentUser } = useAuth()
+  const { logOut } = useAuth()
 
   return (
     <main className="menu">
@@ -12,7 +14,9 @@ const LandingPage = () => {
       <br />
       <br />
       <br />
-      <p>You&apos;re logged in as User {currentUser.id}.</p>
+      <p>
+        You&apos;re logged in as User <UserCell />.
+      </p>
       <br />
       <br />
       <br />
