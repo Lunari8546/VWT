@@ -6,10 +6,15 @@ export const QUERY = gql`
   query FindUserQuery($id: Int!) {
     user: user(id: $id) {
       id
+      email
       name
     }
   }
 `
+
+interface Props extends CellSuccessProps<FindUserQuery> {
+  type: string
+}
 
 export const Loading = () => <div>Loading...</div>
 
@@ -21,8 +26,10 @@ export const Failure = ({
   <div style={{ color: 'red' }}>Error: {error.message}</div>
 )
 
-export const Success = ({
-  user,
-}: CellSuccessProps<FindUserQuery, FindUserQueryVariables>) => {
-  return <span>{JSON.stringify(user.name).slice(1, -1)}</span>
+export const Success = ({ user, type }: Props) => {
+  if (type === 'id') {
+    return <span>{JSON.stringify(user[type])}</span>
+  } else {
+    return <span>{JSON.stringify(user[type]).slice(1, -1)}</span>
+  }
 }

@@ -7,7 +7,7 @@ Voyage within Terminals.
 ```
 yarn install
 yarn rw dev [web/api]
-yarn rw g [page/component] [name]
+yarn rw g [page/component/types/sdl] [name]
 yarn rw prisma migrate dev
 yarn rw storybook
 yarn rw test

@@ -15,7 +15,7 @@ const LandingPage = () => {
       <br />
       <br />
       <p>
-        You&apos;re logged in as <UserCell id={currentUser.id} />
+        You&apos;re logged in as <UserCell id={currentUser.id} type="name" />
       </p>
       <br />
       <br />

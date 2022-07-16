@@ -1,12 +1,52 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
 
+import UserCell from 'src/components/UserCell'
+
 const TerminalPage = () => {
+  const { currentUser } = useAuth()
+
   const inputRef = useRef(null)
 
   const [input, setInput] = useState('')
   const [output, setOutput] = useState('')
+
+  const commands = {
+    about: 'about',
+    clear: 'clear',
+    help: 'help',
+  }
+
+  const runCommand = (el) => {
+    if (el.key === 'Enter') {
+      if (input.trim().length === 0) return
+
+      let newOutput = ''
+      newOutput = output + '\n' + '> ' + input + '\n'
+
+      switch (input.toLowerCase()) {
+        case commands.about:
+          newOutput +=
+            'Voyages within Terminal, version DEMO. \n' +
+            'Website licensed under the GNU GPLv3 license.'
+          break
+        case commands.clear:
+          newOutput = ''
+          break
+        case 'help':
+          newOutput += 'WIP'
+          break
+        default:
+          newOutput += 'Invalid command.'
+          break
+      }
+
+      setOutput(newOutput)
+      setInput('')
+    }
+  }
 
   useEffect(() => {
     inputRef.current.focus()
@@ -35,7 +75,9 @@ const TerminalPage = () => {
           <p>{output}</p>
         </div>
         <div className="console">
-          <span>user@vwt.vercel.app &#62; </span>
+          <span>
+            <UserCell id={currentUser.id} type="email" /> &#62;{' '}
+          </span>
           <input
             ref={inputRef}
             type="text"
@@ -44,33 +86,7 @@ const TerminalPage = () => {
               setInput(el.target.value)
             }}
             onKeyDown={(el) => {
-              if (el.key === 'Enter') {
-                if (input === '') return
-
-                let newOutput = ''
-                newOutput = output + '\n' + '> ' + input + '\n'
-
-                switch (input.toLowerCase()) {
-                  case 'about':
-                    newOutput +=
-                      'Voyages within Terminal, version DEMO. \n' +
-                      'Website licensed under the GNU GPLv3 license.'
-                    break
-                  case 'clear':
-                  case 'cls':
-                    newOutput = ''
-                    break
-                  case 'help':
-                    newOutput += 'WIP'
-                    break
-                  default:
-                    newOutput += 'Invalid command.'
-                    break
-                }
-
-                setOutput(newOutput)
-                setInput('')
-              }
+              runCommand(el)
             }}
             autoComplete="off"
           ></input>
