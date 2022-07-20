@@ -1,6 +1,6 @@
 # VWT
 
-Voyage within Terminals.
+Voyages within Terminal.
 
 ## Useful commands for development:
 

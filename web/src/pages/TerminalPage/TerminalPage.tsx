@@ -14,9 +14,10 @@ const TerminalPage = () => {
   const [output, setOutput] = useState('')
 
   const commands = {
-    about: 'about',
-    clear: 'clear',
-    help: 'help',
+    about: {},
+    clear: {},
+    help: { cmd: String },
+    profile: {},
   }
 
   const runCommand = (el) => {
@@ -27,17 +28,39 @@ const TerminalPage = () => {
       newOutput = output + '\n' + '> ' + input + '\n'
 
       switch (input.toLowerCase()) {
-        case commands.about:
+        case 'about':
           newOutput +=
-            'Voyages within Terminal, version DEMO. \n' +
+            'Voyages within Terminal, version DEMO.\n' +
             'Website licensed under the GNU GPLv3 license.'
           break
-        case commands.clear:
+
+        case 'clear':
           newOutput = ''
           break
-        case 'help':
-          newOutput += 'WIP'
+
+        case 'help': {
+          let i = 0
+
+          for (const k in commands) {
+            const v = commands[k]
+
+            newOutput += `${k}`
+
+            for (const k in v) {
+              newOutput += ` <${k}>`
+            }
+
+            if (i !== Object.keys(commands).length - 1) newOutput += ',\n'
+
+            i++
+          }
           break
+        }
+
+        case 'profile':
+          newOutput += <UserCell type={'name'} id={currentUser.id} />
+          break
+
         default:
           newOutput += 'Invalid command.'
           break
